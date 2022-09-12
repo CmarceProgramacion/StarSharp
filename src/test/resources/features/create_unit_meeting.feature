@@ -6,17 +6,18 @@ Feature: Validate the creation of the business unit and the meeting
   Background: Accessing the platform
     Given that I access the StartSharp platform with "admin" and "serenity"
 
-
+  @CaseUno
   Scenario Outline: Validate business unit creation
     When I create a business unit "<nameUnit>" and "<parentUnit>"
-    Then I verify the successful creation of the business unit
-      | <nameUnit> | <parentUnit> |
+    Then I verify the successful creation of the business unit "<nameUnit>"
+
 
     Examples:
-      | nameUnit  | parentUnit |
-      | Choucair1 | Marketing  |
+      | nameUnit  | parentUnit              |
+      | Choucair1 | Marketing » Editor Team |
 
 
+  @CaseDos
   Scenario Outline: Validate meeting creation
     When I create the meeting
       | <meetingName> | <meetingType> | <meetingNumber> | <startDate> | <starTime> | <endDate> | <endTime> | <location> | <unit> | <organizedBy> | <reporter> | <attendeeList> | <attendeeType> | <attenDanceStatus> |

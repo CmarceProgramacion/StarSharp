@@ -5,6 +5,7 @@ apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
 
 group 'com.sophossolutions'
 version '1.0-SNAPSHOT'
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -24,8 +25,8 @@ buildscript {
 }
 
 ext{
-    serenityVersion = "3.3.0"
-    serenityCucumberVersion = "3.3.0"
+    serenityVersion = "3.3.4"
+    serenityCucumberVersion = "3.3.4"
 }
 
 dependencies {
