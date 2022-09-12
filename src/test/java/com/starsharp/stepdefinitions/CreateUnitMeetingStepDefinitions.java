@@ -2,6 +2,7 @@ package com.starsharp.stepdefinitions;
 
 import com.starsharp.models.MeetingModel;
 import com.starsharp.questions.ValidateMessage;
+import com.starsharp.tasks.CreateMeetTask;
 import com.starsharp.tasks.Login;
 import com.starsharp.tasks.CreateBusinessUnitTask;
 import io.cucumber.datatable.DataTable;
@@ -15,6 +16,8 @@ import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import org.openqa.selenium.Keys;
+
+import java.util.List;
 
 import static com.starsharp.userinterfaces.DashboardPage.INPUT_SEARCH_BUSINESS_UNIT;
 import static com.starsharp.utils.AccessList.URL_PLATFORM;
@@ -58,8 +61,11 @@ public class CreateUnitMeetingStepDefinitions {
     }
 
     @When("I create the meeting")
-    public void iCreateTheMeeting(DataTable formData) {
-        MeetingModel meetingModel = new MeetingModel(formData.asList());
+    public void iCreateTheMeeting(List<List<String>>formData) {
+        MeetingModel meetingModel = new MeetingModel(formData.get(0));
+        theActorInTheSpotlight().attemptsTo(
+                CreateMeetTask.createMeet(meetingModel)
+        );
 
 
 
