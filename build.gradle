@@ -30,18 +30,23 @@ ext{
 }
 
 dependencies {
-
     implementation 'junit:junit:4.13.2'
-    compile group: 'net.serenity-bdd', name: 'serenity-junit', version: "$rootProject.ext.serenityVersion"
-    compile group: 'net.serenity-bdd', name: 'serenity-core', version: "$rootProject.ext.serenityVersion"
-    compile group: 'net.serenity-bdd', name: 'serenity-cucumber', version: "$rootProject.ext.serenityCucumberVersion"
-    compile group: 'net.serenity-bdd', name: 'serenity-screenplay', version: "$rootProject.ext.serenityVersion"
-    compile group: 'net.serenity-bdd', name: 'serenity-screenplay-webdriver', version: "$rootProject.ext.serenityVersion"
-    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.30'
-
-    testCompile group: 'junit', name: 'junit', version: '4.13.2'
+    implementation group: 'net.serenity-bdd', name: 'serenity-junit', version: "${serenityVersion}"
+    implementation group: 'net.serenity-bdd', name: 'serenity-core', version: "${serenityVersion}"
+    implementation group: 'net.serenity-bdd', name: 'serenity-cucumber', version: "${serenityCucumberVersion}"
+    implementation group: 'net.serenity-bdd', name: 'serenity-screenplay', version: "${serenityVersion}"
+    implementation group: 'net.serenity-bdd', name: 'serenity-screenplay-webdriver', version: "${serenityVersion}"
+    implementation group: 'net.serenity-bdd', name: 'serenity-ensure', version: '3.2.5'
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.30'
+    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
 }
 
+serenity {
+    // Specify the root package of any JUnit acceptance tests to appear in the Serenity report
+    testRoot = "starter"
+    // Specify the root directory of any Cucumber feature files
+    requirementsDir = "src/test/resources/features"
+}
 
 
 test {
@@ -50,9 +55,8 @@ test {
     systemProperty "feature.file.encoding", "UTF-8"
     systemProperty "cucumber.options", System.properties.getProperty("cucumber.options")
     testLogging.showStandardStreams = true
-    finalizedBy(aggregate)
 }
 
 gradle.startParameter.continueOnFailure = true
-
+test.finalizedBy(aggregate)
 

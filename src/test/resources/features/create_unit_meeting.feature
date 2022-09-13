@@ -1,32 +1,16 @@
+#
 Feature: Validate the creation of the business unit and the meeting
   As a StartSharp administrator
   I want to create the business unit and create a meeting
   To validate the creation of the business unit and the meeting
 
-  Background: Accessing the platform
-    Given that I access the StartSharp platform with "admin" and "serenity"
-
   @CaseUno
-  Scenario Outline: Validate business unit creation
-    When I create a business unit "<nameUnit>" and "<parentUnit>"
-    Then I verify the successful creation of the business unit "<nameUnit>"
-
-
-    Examples:
-      | nameUnit  | parentUnit              |
-      | Choucair1 | Marketing » Editor Team |
-
-
-  @CaseDos
-  Scenario Outline: Validate meeting creation
-    When I create the meeting
-      | <meetingName> | <meetingType> | <meetingNumber> | <startDate> | <starTime> | <endDate> | <endTime> | <location> | <unit> | <organizedBy> | <reporter> | <attendeeList> | <attendeeType> | <attenDanceStatus> |
+  Scenario Outline:Validating the creation of a meeting with a business unit
+    Given that I access the StartSharp platform with "admin" and "serenity"
+    When I create meeting with a business unit
+      | <nameUnit> | <parentUnit> | <meetingName> | <meetingType> | <meetingNumber> | <startDate> | <starTime> | <endDate> | <endTime> | <location> | <unit> | <organizedBy> | <reporter> | <attendeeList> | <attendeeType> | <attenDanceStatus> |
     Then I verify the successful creation of the meeting "<meetingName>"
 
     Examples:
-      | meetingName                  | meetingType | meetingNumber | startDate  | starTime | endDate    | endTime | location | unit      | organizedBy   | reporter     | attendeeList | attendeeType | attenDanceStatus |
-      | Contextualizacion de negocio | General     | 10            | 09/20/2022 | 11:00    | 09/20/2022 | 12:00   | On Site  | Marketing | Charles Davis | Alexis Lopez | Dylan Smith  | Guest        | Not Set          |
-
-
-
-
+      | nameUnit  | parentUnit              | meetingName                  | meetingType | meetingNumber | startDate  | starTime | endDate    | endTime | location | unit      | organizedBy   | reporter     | attendeeList | attendeeType | attenDanceStatus |
+      | Choucair1 | Marketing » Editor Team | Contextualizacion de negocio | Strategy    | 10            | 09/20/2022 | 10:00    | 09/20/2022 | 11:00   | On Site  | Marketing | Charles Davis | Alexis Lopez | Dylan Smith  | Guest        | Not Set          |
