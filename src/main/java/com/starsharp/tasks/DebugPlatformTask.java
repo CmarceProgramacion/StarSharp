@@ -39,7 +39,7 @@ public class DebugPlatformTask implements Task {
                 Click.on(LIST_ORGANIZATION),
                 Click.on(LIST_BUSINESS_UNITS),
                 Enter.theValue(nameUnitBusiness).into(INPUT_SEARCH_NAME).thenHit(Keys.ENTER),
-                WaitUntil.the(LABEL_ELEMENT_NAME.of(nameUnitBusiness), isVisible()).forNoMoreThan(4).seconds(),
+                WaitUntil.the(LABEL_ELEMENT_NAME.of(nameUnitBusiness), isVisible()).forNoMoreThan(3).seconds(),
                 Click.on(LABEL_ELEMENT_NAME.of(nameUnitBusiness)),
                 Click.on(BUTTON_DELETE_MEETING),
                 Click.on(BUTTON_CONFIRMS_ELIMINATION),
