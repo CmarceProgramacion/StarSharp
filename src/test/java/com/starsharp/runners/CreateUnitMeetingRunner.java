@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(features = "src/test/resources/features/create_unit_meeting.feature",
-        glue="com.starsharp.stepdefinitions",
+        glue = "com.starsharp.stepdefinitions",
         tags = "@CaseUno",
         plugin = {"pretty"},
         snippets = CucumberOptions.SnippetType.CAMELCASE

@@ -3,7 +3,7 @@ package com.starsharp.questions;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 
-import static com.starsharp.userinterfaces.DashboardPage.ELEMENT_NAME;
+import static com.starsharp.userinterfaces.DashboardPage.LABEL_ELEMENT_NAME;
 
 public class ValidateCreationName implements Question<Boolean> {
     private String name;
@@ -18,6 +18,6 @@ public class ValidateCreationName implements Question<Boolean> {
 
     @Override
     public Boolean answeredBy(Actor actor) {
-        return ELEMENT_NAME.of(name).isVisibleFor(actor);
+        return LABEL_ELEMENT_NAME.of(name).isVisibleFor(actor);
     }
 }

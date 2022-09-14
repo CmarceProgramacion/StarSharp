@@ -1,4 +1,6 @@
-#
+#Autor: Claudia Nieto
+#Email: cmarce86@yahoo.es
+
 Feature: Validate the creation of the business unit and the meeting
   As a StartSharp administrator
   I want to create the business unit and create a meeting

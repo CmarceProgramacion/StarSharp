@@ -14,6 +14,7 @@ import static com.starsharp.userinterfaces.MeetingPage.BUTTON_CONFIRMS_ELIMINATI
 import static com.starsharp.userinterfaces.MeetingPage.BUTTON_DELETE_MEETING;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isNotVisible;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class DebugPlatformTask implements Task {
     private String nameUnitBusiness;
@@ -31,17 +32,18 @@ public class DebugPlatformTask implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         theActorInTheSpotlight().attemptsTo(
-                Click.on(ELEMENT_NAME.of(nameMeetingBusiness)),
+                Click.on(LABEL_ELEMENT_NAME.of(nameMeetingBusiness)),
                 Click.on(BUTTON_DELETE_MEETING),
                 Click.on(BUTTON_CONFIRMS_ELIMINATION),
-                WaitUntil.the(ELEMENT_NAME.of(nameMeetingBusiness), isNotVisible()).forNoMoreThan(3).seconds(),
+                WaitUntil.the(LABEL_ELEMENT_NAME.of(nameMeetingBusiness), isNotVisible()).forNoMoreThan(4).seconds(),
                 Click.on(LIST_ORGANIZATION),
                 Click.on(LIST_BUSINESS_UNITS),
                 Enter.theValue(nameUnitBusiness).into(INPUT_SEARCH_NAME).thenHit(Keys.ENTER),
-                Click.on(ELEMENT_NAME.of(nameUnitBusiness)),
+                WaitUntil.the(LABEL_ELEMENT_NAME.of(nameUnitBusiness), isVisible()).forNoMoreThan(4).seconds(),
+                Click.on(LABEL_ELEMENT_NAME.of(nameUnitBusiness)),
                 Click.on(BUTTON_DELETE_MEETING),
                 Click.on(BUTTON_CONFIRMS_ELIMINATION),
-                WaitUntil.the(ELEMENT_NAME.of(nameUnitBusiness), isNotVisible()).forNoMoreThan(3).seconds()
+                WaitUntil.the(LABEL_ELEMENT_NAME.of(nameUnitBusiness), isNotVisible()).forNoMoreThan(3).seconds()
         );
     }
 }

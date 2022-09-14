@@ -40,7 +40,7 @@ public class CreateBusinessUnitTask implements Task {
                 Enter.theValue(parentUnit).into(INPUT_PARENT_UNIT).thenHit(Keys.ENTER),
                 Click.on(BUTTON_SAVE),
                 Enter.theValue(nameUnit).into(INPUT_SEARCH_NAME).thenHit(Keys.ENTER),
-                Ensure.that(ELEMENT_NAME.of(nameUnit)).isDisplayed()
+                Ensure.that(LABEL_ELEMENT_NAME.of(nameUnit)).isDisplayed()
         );
     }
 }
