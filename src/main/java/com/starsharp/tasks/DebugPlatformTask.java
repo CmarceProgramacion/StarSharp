@@ -1,5 +1,6 @@
 package com.starsharp.tasks;
 
+import com.starsharp.interactions.OpenSidebarAction;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
@@ -36,6 +37,7 @@ public class DebugPlatformTask implements Task {
                 Click.on(BUTTON_DELETE_MEETING),
                 Click.on(BUTTON_CONFIRMS_ELIMINATION),
                 WaitUntil.the(LABEL_ELEMENT_NAME.of(nameMeetingBusiness), isNotVisible()).forNoMoreThan(4).seconds(),
+                OpenSidebarAction.openSidebar(),
                 Click.on(LIST_ORGANIZATION),
                 Click.on(LIST_BUSINESS_UNITS),
                 Enter.theValue(nameUnitBusiness).into(INPUT_SEARCH_NAME).thenHit(Keys.ENTER),

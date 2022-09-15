@@ -5,6 +5,8 @@ import net.serenitybdd.screenplay.targets.Target;
 
 
 public class DashboardPage extends PageObject {
+
+    public static final Target BUTTON_SIDEBAR = Target.the("Button sidebar menu ").locatedBy("//button[@id='s-sidebar-toggler']/child::i");
     public static final Target LIST_ORGANIZATION = Target.the("Organization drop-down list ").locatedBy("//span[contains(.,'Organization')]");
     public static final Target LIST_BUSINESS_UNITS = Target.the("Business Units rop-down list").locatedBy("//span[@class='s-sidebar-link-text'][contains(.,'Business Units')]");
     public static final Target BUTTON_NEW_BUSINESS_UNITS = Target.the("Button to add new business unit").locatedBy("//div[@class='tool-button add-button icon-tool-button']");
