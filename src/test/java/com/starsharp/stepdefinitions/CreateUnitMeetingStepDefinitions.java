@@ -57,9 +57,7 @@ public class CreateUnitMeetingStepDefinitions {
 
     @Then("I verify the successful creation of the meeting {string}")
     public void iVerifyTheSuccessfulCreationOfTheMeeting(String meetingName) {
-        theActorInTheSpotlight().attemptsTo(
-                Enter.theValue(meetingName).into(INPUT_SEARCH_NAME).thenHit(Keys.ENTER)
-        );
+
         theActorInTheSpotlight().should(
                 GivenWhenThen.seeThat(ValidateCreationName.verify(meetingName))
         );

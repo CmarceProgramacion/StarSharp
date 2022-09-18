@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
 
-group 'com.sophossolutions'
+group 'com.starsharp'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
@@ -24,21 +24,24 @@ buildscript {
     }
 }
 
-ext{
+ext {
     serenityVersion = "3.3.4"
     serenityCucumberVersion = "3.3.4"
+    serenityEnsureVersion = "3.2.5"
+    slf4jSimpleVersion = "1.7.30"
+    junitVersion = "4.13.2"
 }
 
 dependencies {
-    implementation 'junit:junit:4.13.2'
+    implementation group: 'junit', name: 'junit', version: "${junitVersion}"
     implementation group: 'net.serenity-bdd', name: 'serenity-junit', version: "${serenityVersion}"
     implementation group: 'net.serenity-bdd', name: 'serenity-core', version: "${serenityVersion}"
     implementation group: 'net.serenity-bdd', name: 'serenity-cucumber', version: "${serenityCucumberVersion}"
     implementation group: 'net.serenity-bdd', name: 'serenity-screenplay', version: "${serenityVersion}"
     implementation group: 'net.serenity-bdd', name: 'serenity-screenplay-webdriver', version: "${serenityVersion}"
-    implementation group: 'net.serenity-bdd', name: 'serenity-ensure', version: '3.2.5'
-    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.30'
-    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+    implementation group: 'net.serenity-bdd', name: 'serenity-ensure', version: "${serenityEnsureVersion}"
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: "${slf4jSimpleVersion}"
+    testImplementation group: 'junit', name: 'junit', version: "${junitVersion}"
 }
 
 serenity {
@@ -51,9 +54,6 @@ serenity {
 
 test {
     systemProperties System.getProperties()
-    systemProperty "file.encoding", "UTF-8"
-    systemProperty "feature.file.encoding", "UTF-8"
-    systemProperty "cucumber.options", System.properties.getProperty("cucumber.options")
     testLogging.showStandardStreams = true
 }
 
