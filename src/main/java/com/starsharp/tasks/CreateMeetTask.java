@@ -1,6 +1,6 @@
 package com.starsharp.tasks;
 
-import com.starsharp.interactions.OpenSidebarAction;
+import com.starsharp.interactions.FocusElement;
 import com.starsharp.models.MeetingModel;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
@@ -9,8 +9,10 @@ import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.SelectFromOptions;
+import net.serenitybdd.screenplay.conditions.Check;
 import org.openqa.selenium.Keys;
 
+import static com.starsharp.userinterfaces.DashboardPage.BUTTON_SIDEBAR;
 import static com.starsharp.userinterfaces.MeetingPage.*;
 
 public class CreateMeetTask implements Task {
@@ -28,7 +30,7 @@ public class CreateMeetTask implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                OpenSidebarAction.openSidebar(),
+                Check.whether(BUTTON_SIDEBAR.isVisibleFor(actor)).andIfSo(Click.on(BUTTON_SIDEBAR)),
                 Click.on(LIST_MEETING.of("Meeting")),
                 Click.on(LIST_MEETING.of("Meetings")),
                 Click.on(BUTTON_NEW_MEETING),
@@ -58,6 +60,7 @@ public class CreateMeetTask implements Task {
                 Enter.theValue(meetingModel.getAttendeeList()).into(INPUT_LIST).thenHit(Keys.ENTER),
                 SelectFromOptions.byVisibleText(meetingModel.getAttendeeType()).from(LIST_ATTENDEE_TYPE),
                 SelectFromOptions.byVisibleText(meetingModel.getAttendanceStatus()).from(LIST_ATTENDANCE_STATUS),
+                FocusElement.focus(BUTTON_SAVE_MEETING),
                 Click.on(BUTTON_SAVE_MEETING)
         );
     }
