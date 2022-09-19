@@ -1,5 +1,6 @@
 package com.starsharp.tasks;
 
+import com.starsharp.interactions.OpenSidebarAction;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
