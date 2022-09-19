@@ -1,6 +1,5 @@
 package com.starsharp.tasks;
 
-import com.starsharp.interactions.OpenSidebarAction;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
@@ -34,7 +33,6 @@ public class CreateBusinessUnitTask implements Task {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 Check.whether(BUTTON_SIDEBAR.isVisibleFor(actor)).andIfSo(Click.on(BUTTON_SIDEBAR)),
-                //OpenSidebarAction.openSidebar(),
                 Click.on(LIST_ORGANIZATION),
                 Click.on(LIST_BUSINESS_UNITS),
                 Click.on(BUTTON_NEW_BUSINESS_UNITS),

@@ -14,15 +14,12 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.screenplay.GivenWhenThen;
-import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
-import org.openqa.selenium.Keys;
 
 import java.util.List;
 
-import static com.starsharp.userinterfaces.DashboardPage.INPUT_SEARCH_NAME;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class CreateUnitMeetingStepDefinitions {
@@ -57,7 +54,6 @@ public class CreateUnitMeetingStepDefinitions {
 
     @Then("I verify the successful creation of the meeting {string}")
     public void iVerifyTheSuccessfulCreationOfTheMeeting(String meetingName) {
-
         theActorInTheSpotlight().should(
                 GivenWhenThen.seeThat(ValidateCreationName.verify(meetingName))
         );

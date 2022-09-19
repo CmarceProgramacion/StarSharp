@@ -1,7 +1,6 @@
 package com.starsharp.tasks;
 
 import com.starsharp.interactions.FocusElement;
-import com.starsharp.interactions.OpenSidebarAction;
 import com.starsharp.models.MeetingModel;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
@@ -9,7 +8,6 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
-import net.serenitybdd.screenplay.actions.Scroll;
 import net.serenitybdd.screenplay.actions.SelectFromOptions;
 import net.serenitybdd.screenplay.conditions.Check;
 import org.openqa.selenium.Keys;
@@ -62,7 +60,7 @@ public class CreateMeetTask implements Task {
                 Enter.theValue(meetingModel.getAttendeeList()).into(INPUT_LIST).thenHit(Keys.ENTER),
                 SelectFromOptions.byVisibleText(meetingModel.getAttendeeType()).from(LIST_ATTENDEE_TYPE),
                 SelectFromOptions.byVisibleText(meetingModel.getAttendanceStatus()).from(LIST_ATTENDANCE_STATUS),
-                Scroll.to(BUTTON_SAVE_MEETING),
+                FocusElement.focus(BUTTON_SAVE_MEETING),
                 Click.on(BUTTON_SAVE_MEETING)
         );
     }
